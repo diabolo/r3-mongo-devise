@@ -55,7 +55,7 @@ module R3MongoDevise
       g.helper_specs false
     end
 
-
+    config.filter_parameters += [:password, :password_confirmation]
 
   end
 end
