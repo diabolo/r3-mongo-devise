@@ -5,8 +5,6 @@ gem 'rails', '3.1.3'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -28,4 +26,15 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+#
+gem "rspec-rails", ">= 2.7.0", :group => [:development, :test]
+gem "database_cleaner", ">= 0.6.7", :group => :test
+gem "mongoid-rspec", ">= 1.4.4", :group => :test
+gem "factory_girl_rails", ">= 1.3.0", :group => :test
+gem "cucumber-rails", ">= 1.1.1", :group => :test
+gem "capybara", ">= 1.1.1", :group => :test
+gem "launchy", ">= 2.0.5", :group => :test
+gem "bson_ext", ">= 1.3.1"
+gem "mongoid", ">= 2.2.3"
+gem "devise", ">= 1.4.9"
 
