@@ -1,5 +1,6 @@
 module RegisterStepHelper
   def register_as(user)
+    click_link new_user_registration_path
     debugger
     within '#register' do
       fill_in('.email', :text => user.email)
