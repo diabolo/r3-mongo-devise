@@ -5,6 +5,5 @@ Feature: Register
 
   Scenario: Register
     Given I am Fred
-    When I visit the site
-    And I register
+    When I register
     Then I should be registered
