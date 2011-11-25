@@ -1,10 +1,11 @@
 module UserStepHelper
   class TUser
-    attr_accessor :name, :email
+    attr_accessor :name, :email, :password
 
     def initialize(name)
       @name = name
       @email = "#{name}.#{name}@exampl.com"
+      @password = "#{name}password"
     end
   end
 

@@ -8,4 +8,7 @@
   %body
     %p.notice= notice
     %p.alert= alert
+    %ul.hmenu
+      = render 'devise/menu/registration'
+      = render 'devise/menu/login'
     = yield

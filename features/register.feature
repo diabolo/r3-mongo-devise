@@ -3,7 +3,6 @@ Feature: Register
   I want users to register
   So I can establish stronger relationships with my users
 
-  @wip
   Scenario: Register
     Given I am Fred
     When I visit the site

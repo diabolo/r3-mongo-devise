@@ -1,13 +1,11 @@
 module RegisterStepHelper
   def register_as(user)
-    click_link new_user_registration_path
-    debugger
-    within '#register' do
-      fill_in('.email', :text => user.email)
-      fill_in('.password', :text => user.password)
-      fill_in('.confirmation', :text => user.confirmation)
-      click 'Register'
-    end
+    click_link 'Register' # get to register form
+    fill_in('user_name', :with => user.name)
+    fill_in('user_email', :with => user.email)
+    fill_in('user_password', :with => user.password)
+    fill_in('user_password_confirmation', :with => user.password)
+    click_button 'Sign up'
   end
 end
 World(RegisterStepHelper)
@@ -17,6 +15,6 @@ When /^I register$/ do
 end
 
 Then /^I should be registered$/ do
-  pending # express the regexp above with the code you wish you had
+  User.where(:name => @I.name).should be_true
 end
 
