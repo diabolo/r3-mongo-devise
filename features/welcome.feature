@@ -3,7 +3,6 @@ Feature: Welcome
   When I visit the site I should be welcomed
   So that I feel wanted
 
-  @wip
   Scenario: Visit the site
     When I visit the site
     Then I should be welcomed
