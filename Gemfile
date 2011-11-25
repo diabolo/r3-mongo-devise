@@ -41,3 +41,4 @@ gem "bson_ext", ">= 1.3.1"
 gem "mongoid", ">= 2.2.3"
 gem "devise", ">= 1.4.9"
 gem "haml-rails"
+gem "erb2haml", :group => :development
