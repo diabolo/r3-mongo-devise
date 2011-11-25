@@ -4,7 +4,7 @@ module UserStepHelper
 
     def initialize(name)
       @name = name
-      @email = "#{name}.#{name}@exampl.com"
+      @email = "#{name}.#{name}@example.com".downcase
       @password = "#{name}password"
     end
   end
