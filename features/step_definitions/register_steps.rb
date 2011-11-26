@@ -50,7 +50,7 @@ When /^I view my profile$/ do
 end
 
 Then /^I should be signed in$/ do
-  page.body.should have_css('.notice', :text => /signed.*success/i)
+  page.body.should have_css('#flash_notice', :text => /signed.*success/i)
 end
 
 Then /^I should be registered$/ do

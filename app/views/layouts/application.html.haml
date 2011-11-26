@@ -6,9 +6,9 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    %p.notice= notice
-    %p.alert= alert
     %ul.hmenu
       = render 'devise/menu/registration'
       = render 'devise/menu/login'
+    - flash.each do |name, msg|
+      = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
     = yield
