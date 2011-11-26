@@ -12,6 +12,14 @@ module UserStepHelper
   def create_user(name)
     TUser.new(name)
   end
+
+  def bad_password
+    'wibbletastic'
+  end
+  
+  def bad_email
+    'wibble@badexample.com'
+  end
 end
 World(UserStepHelper)
 

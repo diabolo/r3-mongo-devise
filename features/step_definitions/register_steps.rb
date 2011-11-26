@@ -9,7 +9,9 @@ module RegisterStepHelper
     click_button 'Sign up'
   end
 
-  def sign_in_as(user)
+  def sign_in_as(user, options={})
+    user = user.dup
+    options.each{|k,v| user.send "#{k}=", v}
     sign_out
     click_link 'Sign in'
     fill_in('user_email', :with => user.email)
@@ -45,12 +47,31 @@ end
 When /^I sign in$/ do
   sign_in_as @I
 end
+
+When /^I sign in as 'Fred'$/ do
+  @I = create_user 'Fred'
+  sign_in_as @I
+end
+
+When /^I sign in with a bad password$/ do
+  sign_in_as @I, :password => bad_password
+end
+
+When /^I sign in with a bad email$/ do
+  sign_in_as @I, :email => bad_email
+end
+
 When /^I view my profile$/ do
   view_my_profile
 end
 
+Then /^I should be signed out$/ do
+  signed_out?.should be_true
+end
+
 Then /^I should be signed in$/ do
-  page.body.should have_css('#flash_notice', :text => /signed.*success/i)
+  signed_out?.should be_false
+#  page.body.should have_css('#flash_notice', :text => /signed.*success/i)
 end
 
 Then /^I should be registered$/ do
