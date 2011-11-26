@@ -1,7 +1,9 @@
 module RegisterStepHelper
-  def register_as(user)
+  def sign_up_as(user, options={})
+    user = user.dup
+    options.each{|k,v| user.send "#{k}=", v}
     visit root_path
-    click_link 'Register' # get to register form
+    click_link 'Sign up' # get to register form
     fill_in('user_name', :with => user.name)
     fill_in('user_email', :with => user.email)
     fill_in('user_password', :with => user.password)
@@ -36,12 +38,19 @@ World(RegisterStepHelper)
 
 Given /^I am registered as 'Fred'$/ do
   @I = create_user 'Fred'
-  register_as @I
+  sign_up_as @I
 end
 
+When /^I sign up$/ do
+  sign_up_as(@I)
+end
 
-When /^I register$/ do
-  register_as(@I)
+When /^I sign up with a malformed email$/ do
+  sign_up_as(@I, :email => malformed_email) 
+end
+
+When /^I sign up with no name$/ do
+  sign_up_as(@I, :name => '')
 end
 
 When /^I sign in$/ do
@@ -81,3 +90,12 @@ end
 Then /^I should see my profile$/ do
   page.should have_css "#user_email[@value='#{@I.email}']"
 end
+
+Then /^I should see malformed email error$/ do
+  page.should have_css('.field_with_errors #user_email')
+end
+
+Then /^I should see no name error$/ do
+  page.should have_css('.field_with_errors #user_name')
+end
+

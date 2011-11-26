@@ -20,6 +20,10 @@ module UserStepHelper
   def bad_email
     'wibble@badexample.com'
   end
+
+  def malformed_email
+    'wibble.badexample.com'
+  end
 end
 World(UserStepHelper)
 
