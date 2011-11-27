@@ -13,7 +13,6 @@ Feature: Sign up
     When I sign up with a malformed email
     Then I should see malformed email error
 
-    @wip
   Scenario: Sign up with no name
     Given I am Fred
     When I sign up with no name
